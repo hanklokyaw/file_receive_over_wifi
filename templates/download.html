@@ -1,21 +1,3 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-<!--    <title>File Download</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--    <h1>Download Files</h1>-->
-<!--    <ul>-->
-<!--        {% for file in files %}-->
-<!--            <li><a href="/download/{{ file }}">{{ file }}</a></li>-->
-<!--        {% endfor %}-->
-<!--    </ul>-->
-<!--</body>-->
-<!--</html>-->
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,15 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Download Files</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #e8f5e9; /* Light green background */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            max-width: 600px;
+            background: white;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+            border-top: 5px solid #28a745; /* Green border on top */
+        }
+        .btn-primary {
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+        .btn-primary:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+        .btn-secondary {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">Download Files</h1>
-        <ul class="list-group">
+    <h1 class="mt-5 text-success">Receive</h1>
+    <div class="container">
+        <h2 class="mb-4 text-success">Receive files from laptop</h2>
+        <ul class="list-group mb-4">
             {% for file in files %}
-                <li class="list-group-item"><a href="/download/{{ file }}">{{ file }}</a></li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span>{{ file }}</span>
+                    <a href="/download/{{ file }}" class="btn btn-primary btn-sm">Save</a>
+                </li>
             {% endfor %}
         </ul>
+        <div class="text-center">
+            <a href="/" class="btn btn-secondary">Back</a>
+        </div>
     </div>
 </body>
 </html>
