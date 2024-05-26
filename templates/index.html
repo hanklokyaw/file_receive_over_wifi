@@ -1,71 +1,95 @@
-<!doctype html>
+<!--<!doctype html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Upload Files</title>-->
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+<!--    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="container">-->
+<!--    <h1 class="mt-5">Upload New Files</h1>-->
+<!--    <form id="upload-form" method="post" enctype="multipart/form-data">-->
+<!--        <div class="form-group">-->
+<!--            <input type="file" name="files" multiple class="form-control-file">-->
+<!--        </div>-->
+<!--        <button type="submit" class="btn btn-primary">Upload</button>-->
+<!--    </form>-->
+<!--    <div id="progress-container" style="display:none;">-->
+<!--        <progress id="progress-bar" value="0" max="100"></progress>-->
+<!--        <span id="progress-percent">0%</span>-->
+<!--    </div>-->
+<!--    <div id="upload-status"></div>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    const form = document.getElementById('upload-form');-->
+<!--    const progressContainer = document.getElementById('progress-container');-->
+<!--    const progressBar = document.getElementById('progress-bar');-->
+<!--    const progressPercent = document.getElementById('progress-percent');-->
+<!--    const uploadStatus = document.getElementById('upload-status');-->
+
+<!--    form.addEventListener('submit', function(event) {-->
+<!--        event.preventDefault();-->
+<!--        const files = form.files.files;-->
+<!--        const formData = new FormData();-->
+<!--        for (let i = 0; i < files.length; i++) {-->
+<!--            formData.append('files', files[i]);-->
+<!--        }-->
+
+<!--        const xhr = new XMLHttpRequest();-->
+<!--        xhr.open('POST', '/upload', true);-->
+
+<!--        xhr.upload.onprogress = function(event) {-->
+<!--            if (event.lengthComputable) {-->
+<!--                const percentComplete = (event.loaded / event.total) * 100;-->
+<!--                progressBar.value = percentComplete;-->
+<!--                progressPercent.textContent = percentComplete.toFixed(2) + '%';-->
+<!--            }-->
+<!--        };-->
+
+<!--        xhr.onload = function() {-->
+<!--            if (xhr.status === 200) {-->
+<!--                uploadStatus.innerHTML = '<p class="text-success">Files successfully uploaded</p>';-->
+<!--            } else {-->
+<!--                uploadStatus.innerHTML = '<p class="text-danger">Error uploading files</p>';-->
+<!--            }-->
+<!--            progressContainer.style.display = 'none';-->
+<!--        };-->
+
+<!--        xhr.onerror = function() {-->
+<!--            uploadStatus.innerHTML = '<p class="text-danger">Error uploading files</p>';-->
+<!--            progressContainer.style.display = 'none';-->
+<!--        };-->
+
+<!--        progressContainer.style.display = 'block';-->
+<!--        xhr.send(formData);-->
+<!--    });-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload Files</title>
+    <title>Welcome to File Transfer</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
 </head>
 <body>
-<div class="container">
-    <h1 class="mt-5">Upload New Files</h1>
-    <form id="upload-form" method="post" enctype="multipart/form-data">
-        <div class="form-group">
-            <input type="file" name="files" multiple class="form-control-file">
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Welcome to File Transfer</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <a href="/upload" class="btn btn-primary btn-block">Upload Files</a>
+            </div>
+            <div class="col-md-4">
+                <a href="/download" class="btn btn-success btn-block">Download Files</a>
+            </div>
         </div>
-        <button type="submit" class="btn btn-primary">Upload</button>
-    </form>
-    <div id="progress-container" style="display:none;">
-        <progress id="progress-bar" value="0" max="100"></progress>
-        <span id="progress-percent">0%</span>
     </div>
-    <div id="upload-status"></div>
-</div>
-
-<script>
-    const form = document.getElementById('upload-form');
-    const progressContainer = document.getElementById('progress-container');
-    const progressBar = document.getElementById('progress-bar');
-    const progressPercent = document.getElementById('progress-percent');
-    const uploadStatus = document.getElementById('upload-status');
-
-    form.addEventListener('submit', function(event) {
-        event.preventDefault();
-        const files = form.files.files;
-        const formData = new FormData();
-        for (let i = 0; i < files.length; i++) {
-            formData.append('files', files[i]);
-        }
-
-        const xhr = new XMLHttpRequest();
-        xhr.open('POST', '/upload', true);
-
-        xhr.upload.onprogress = function(event) {
-            if (event.lengthComputable) {
-                const percentComplete = (event.loaded / event.total) * 100;
-                progressBar.value = percentComplete;
-                progressPercent.textContent = percentComplete.toFixed(2) + '%';
-            }
-        };
-
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                uploadStatus.innerHTML = '<p class="text-success">Files successfully uploaded</p>';
-            } else {
-                uploadStatus.innerHTML = '<p class="text-danger">Error uploading files</p>';
-            }
-            progressContainer.style.display = 'none';
-        };
-
-        xhr.onerror = function() {
-            uploadStatus.innerHTML = '<p class="text-danger">Error uploading files</p>';
-            progressContainer.style.display = 'none';
-        };
-
-        progressContainer.style.display = 'block';
-        xhr.send(formData);
-    });
-</script>
 </body>
 </html>
