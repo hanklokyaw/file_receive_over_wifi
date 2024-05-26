@@ -1,4 +1,4 @@
-# Flask File Transfer App
+# Python File Transfer App
 
 The Flask File Transfer App is a web application built with Flask that allows users to transfer files between devices over a local network. It provides a simple and convenient way to upload and download files securely.
 
