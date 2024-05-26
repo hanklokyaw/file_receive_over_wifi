@@ -20,7 +20,7 @@ The Flask File Transfer App is a web application built with Flask that allows us
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/flask-file-transfer-app.git
+   git clone [https://github.com/yourusername/flask-file-transfer-app.git](https://github.com/hanklokyaw/file_receive_over_wifi.git)
    ```
 
 2. Navigate to the project directory:
