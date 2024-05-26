@@ -69,6 +69,3 @@ Contributions are welcome! Please feel free to open an issue or submit a pull re
 ### License
 
 This project is licensed under the MIT License.
-   ```vbnet
-   Replace `app_screenshot.png` with the actual screenshot of your application. This README provides detailed instructions on installation, usage, contributing, and licensing for your project. Feel free to modify it according to your specific requirements.
-   ```
