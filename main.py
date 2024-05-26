@@ -57,10 +57,12 @@
 
 
 
-from flask import Flask, redirect, url_for, render_template, send_from_directory
+from flask import Flask, request, redirect, url_for, flash, jsonify, render_template, send_from_directory
+from werkzeug.utils import secure_filename
 import os
 
 app = Flask(__name__)
+app.secret_key = 'supersecretkey'
 
 # Configure upload folder and allowed extensions
 UPLOAD_FOLDER = 'uploads'
@@ -86,10 +88,23 @@ def download_form():
     files = os.listdir('uploads')
     return render_template('download.html', files=files)
 
-@app.route('/upload_file', methods=['POST'])
-def upload_file():
-    # Handle file upload logic here
-    return redirect(url_for('upload_form'))
+@app.route('/upload', methods=['POST'])
+def upload_files():
+    if 'files' not in request.files:
+        flash('No file part')
+        return redirect(url_for('upload_form'))
+
+    files = request.files.getlist('files')
+    if not files or all(file.filename == '' for file in files):
+        flash('No selected file')
+        return redirect(url_for('upload_form'))
+
+    for file in files:
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+    return jsonify({'message': 'Files successfully uploaded'})
 
 @app.route('/download/<filename>')
 def download_file(filename):
