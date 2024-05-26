@@ -26,7 +26,7 @@ The Flask File Transfer App is a web application built with Flask that allows us
 2. Navigate to the project directory:
 
    ```bash
-   cd flask-file-transfer-app
+   cd file_receive_over_wifi
    ```
 
 3. Install dependencies:
@@ -40,20 +40,20 @@ The Flask File Transfer App is a web application built with Flask that allows us
 1. Run the Flask application:
 
    ```bash
-   python app.py
+   python main.py
    ```
 
 2. Access the application in your web browser at such as `http://192.168.1.100:5000`
 
-3. Upload Files:
+3. Send Files:
 
-   - Navigate to the "Upload" page.
+   - Navigate to the "Send" page.
    - Select one or multiple files from your device.
-   - Click the "Upload" button to upload the selected files to the server.
+   - Click the "Send" button to send the selected files to the server.
 
-4. Download Files:
+4. Receive Files:
 
-   - Navigate to the "Download" page.
+   - Navigate to the "Receive" page.
    - Browse the list of files available on the server.
    - Click on a file name to download it to your device.
   
